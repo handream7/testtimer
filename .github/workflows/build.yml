@@ -2,7 +2,7 @@ name: Buildozer APK Build
 
 on: [push]
 
-jobs FAILED:
+jobs:
   build:
     runs-on: ubuntu-latest
 
@@ -20,4 +20,4 @@ jobs FAILED:
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.apk-path }} # 'apk_path' -> 'apk-path' for this action
+          path: ${{ steps.buildozer.outputs.apk-path }}
