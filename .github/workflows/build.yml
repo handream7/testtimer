@@ -10,8 +10,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build with official Kivy Action
-        uses: kivy/buildozer-action@master
+      - name: Build with a different Buildozer Action
+        uses: ach-diff/buildozer-action@v3.2.0
         id: buildozer
         with:
           command: buildozer -v android debug apk
@@ -20,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.apk-path }}
+          path: ${{ steps.buildozer.outputs.apk_path }}
