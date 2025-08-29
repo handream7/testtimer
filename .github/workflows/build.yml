@@ -20,7 +20,7 @@ jobs:
           command: buildozer -v android debug apk
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: ${{ steps.buildozer.outputs.apk_path }}
