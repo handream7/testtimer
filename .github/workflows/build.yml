@@ -2,19 +2,16 @@ name: Buildozer APK Build
 
 on: [push]
 
-jobs:
+jobs FAILED:
   build:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Buildozer and Build APK
-        uses: ArtemSBulgakov/buildozer-action@v1
+      - name: Build with official Kivy Action
+        uses: kivy/buildozer-action@master
         id: buildozer
         with:
           command: buildozer -v android debug apk
@@ -23,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.apk_path }}
+          path: ${{ steps.buildozer.outputs.apk-path }} # 'apk_path' -> 'apk-path' for this action
